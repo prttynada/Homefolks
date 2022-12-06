@@ -1,9 +1,24 @@
-import Hello from '../components/Hello';
+import Container from '../components/Container';
+import Footer from '../components/Footer';
+import Login from '../components/Login';
+import Navbar from '../components/Navbar';
+
+function Main() {
+  return (
+    <main>
+      <Login />
+    </main>
+  );
+}
 
 function LoginPage() {
   return (
     <>
-      <Hello hello="Login Component" />
+      <Navbar name="Sign Up" />
+      <Container>
+        <Main />
+      </Container>
+      <Footer />
     </>
   );
 }

@@ -10,6 +10,7 @@ const StyledFooter = styled.div`
   }
   h2 {
     margin-bottom: 1rem;
+    font-weight: bold;
   }
   p {
     margin-bottom: 2rem;

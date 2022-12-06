@@ -37,7 +37,7 @@ const StyledStep = styled.div`
   @media (min-width: 768px) {
     flex-basis: 50%;
     padding: 2rem;
-    h {
+    h3 {
       font-size: 1.95rem;
     }
   }

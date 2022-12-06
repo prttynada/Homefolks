@@ -1,12 +1,16 @@
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
-import Hello from '../../components/NotFound';
+import Steps from '../../components/Steps';
+import Summary from '../../components/Summary';
+import Welcome from '../../components/Welcome/Welcome';
 
 function Main() {
   return (
     <main>
-      <Hello />
+      <Welcome />
+      <Steps />
+      <Summary />
     </main>
   );
 }

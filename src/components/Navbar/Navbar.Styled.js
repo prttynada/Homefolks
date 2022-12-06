@@ -14,6 +14,7 @@ const StyledNavbar = styled.div`
   h1 {
     font-size: 2.4rem;
     margin-bottom: 1rem;
+    font-weight: bold;
   }
   .login a {
     background-color: #ffffff;

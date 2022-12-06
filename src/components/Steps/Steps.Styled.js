@@ -12,6 +12,7 @@ const StyledSteps = styled.div`
     margin-bottom: 1rem;
     font-size: 2.44rem;
     color: ${({ theme }) => theme.colors.primary};
+    font-weight: bold;
   }
   .subtitle {
     color: ${({ theme }) => theme.colors.blackcolor};

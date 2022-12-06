@@ -1,9 +1,24 @@
-import Hello from '../../components/Hello';
+import Container from '../../components/Container';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
+import Hello from '../../components/NotFound';
+
+function Main() {
+  return (
+    <main>
+      <Hello />
+    </main>
+  );
+}
 
 function AboutPage() {
   return (
     <>
-      <Hello hello="About Us Component" />
+      <Navbar />
+      <Container>
+        <Main />
+      </Container>
+      <Footer />
     </>
   );
 }

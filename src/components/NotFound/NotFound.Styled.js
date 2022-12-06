@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 
-const StyledSummary = styled.div`
+const Container = styled.div`
+  margin: 5rem auto;
+  padding: 1rem;
+  @media screen and (min-width: 992px) {
+    max-width: 1200px;
+  }
+`;
+
+const StyledNotFound = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
 
-  .summary__right {
+  .hero__left {
     margin-bottom: 1rem;
   }
   h2 {
@@ -14,16 +22,19 @@ const StyledSummary = styled.div`
     font-size: 2.44rem;
     font-weight: bold;
   }
+  span {
+    color: ${({ theme }) => theme.colors.secondary};
+  }
   p {
     color: ${({ theme }) => theme.colors.graycolor};
-    margin-bottom: 2rem;
-    text-align: justify;
+    margin-bottom: 3rem;
+    text-align: center;
   }
   img {
     max-width: 100%;
     height: auto;
     border-radius: 25px;
-    margin-bottom: 2rem;
+    margin-top: 4rem;
   }
   @media screen and (min-width: 769px) {
   }
@@ -32,7 +43,7 @@ const StyledSummary = styled.div`
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    .summary__right {
+    .hero__left {
       flex-basis: 50%;
     }
     h2 {
@@ -40,11 +51,16 @@ const StyledSummary = styled.div`
     }
     p {
       font-size: 1.5rem;
+      text-align: justify;
     }
     img {
-      height: 400px;
+      height: 500px;
+    }
+    p {
+      max-width: 70%;
     }
   }
 `;
 
-export default StyledSummary;
+export default StyledNotFound;
+export { Container };

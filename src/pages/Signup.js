@@ -1,21 +1,17 @@
 import Container from '../components/Container';
 import Footer from '../components/Footer';
-import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
-import Steps from '../components/Steps';
-import Summary from '../components/Summary';
+import SignUp from '../components/SignUp';
 
 function Main() {
   return (
     <main>
-      <Hero />
-      <Steps />
-      <Summary />
+      <SignUp />
     </main>
   );
 }
 
-function Home() {
+function SignupPage() {
   return (
     <>
       <Navbar name="Login" />
@@ -27,4 +23,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default SignupPage;

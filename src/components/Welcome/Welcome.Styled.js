@@ -8,22 +8,22 @@ const Container = styled.div`
   }
 `;
 
-const StyledHero = styled.div`
+const StyledWelcome = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 15px;
+  padding: 3rem;
 
   .hero__left {
     margin-bottom: 1rem;
   }
   h2 {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
     margin-bottom: 1rem;
     font-size: 2.44rem;
     font-weight: bold;
-  }
-  span {
-    color: ${({ theme }) => theme.colors.secondary};
   }
   p {
     color: ${({ theme }) => theme.colors.graycolor};
@@ -34,9 +34,37 @@ const StyledHero = styled.div`
     max-width: 100%;
     height: auto;
     border-radius: 25px;
-    margin-top: 4rem;
+    margin: 4rem auto auto;
+  }
+  .card {
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: ${({ theme }) => theme.colors.white};
+    height: 150px;
+    max-width: 100px;
+    text-align: center;
+  }
+  .card h3 {
+    color: ${({ theme }) => theme.colors.danger};
+    font-size: ${({ theme }) => theme.fontsizes.sm};
+    font-weight: bold;
+  }
+  .card img {
+    max-width: 100%;
+    margin: 1rem auto 1rem;
   }
   @media screen and (min-width: 769px) {
+    .card {
+      height: 200px;
+      max-width: 100%;
+    }
+    .card h3 {
+      font-size: ${({ theme }) => theme.fontsizes.md};
+    }
+    .card img {
+      max-height: 100px;
+    }
   }
   @media screen and (min-width: 992px) {
     flex-direction: row;
@@ -62,5 +90,5 @@ const StyledHero = styled.div`
   }
 `;
 
-export default StyledHero;
+export default StyledWelcome;
 export { Container };

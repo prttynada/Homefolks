@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Button from '../ui/Button';
 import StyledNavbar from './Navbar.Styled';
 
-function Navbar() {
+function Navbar({ name = 'Login' }) {
   return (
     <StyledNavbar>
       <nav>
@@ -13,21 +13,14 @@ function Navbar() {
           <div className="nav__list">
             <ul>
               <li className="login">
-                <Button
-                  as="a"
-                  href=""
-                  variant="white"
-                  size="lg"
-                  fontColor="primary"
-                >
-                  <Link to="/login">Login</Link>
+                <Button href="" variant="white" size="lg" fontColor="primary">
+                  <Link to={name === 'Login' ? '/login' : '/signup'}>
+                    {name}
+                  </Link>
                 </Button>
               </li>
               <li>
                 <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/homefolks/articles">Articles</Link>
               </li>
               <li>
                 <Link to="/homefolks/about">About Us</Link>
