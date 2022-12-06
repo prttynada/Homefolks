@@ -13,13 +13,7 @@ function Navbar() {
           <div className="nav__list">
             <ul>
               <li className="login">
-                <Button
-                  as="a"
-                  href=""
-                  variant="white"
-                  size="lg"
-                  fontColor="primary"
-                >
+                <Button href="" variant="white" size="lg" fontColor="primary">
                   <Link to="/login">Login</Link>
                 </Button>
               </li>

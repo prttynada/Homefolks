@@ -23,6 +23,10 @@
     "import/no-unresolved": 0,
     "implicit-arrow-linebreak": 0,
     "operator-linebreak": 0,
-    "react/jsx-one-expression-per-line": 0
+    "react/jsx-one-expression-per-line": 0,
+    "no-else-return": 0,
+    "react/jsx-closing-tag-location": 0,
+    "react/no-children-prop": 0,
+    "object-curly-newline": 0
   }
 }

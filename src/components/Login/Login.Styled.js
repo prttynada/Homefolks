@@ -8,7 +8,7 @@ const Container = styled.div`
   }
 `;
 
-const StyledHero = styled.div`
+const StyledLogin = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -16,25 +16,49 @@ const StyledHero = styled.div`
   .hero__left {
     margin-bottom: 1rem;
   }
-  h2 {
+  p {
     color: ${({ theme }) => theme.colors.primary};
-    margin-bottom: 1rem;
-    font-size: 2.44rem;
-    font-weight: bold;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-weight: 500;
   }
   span {
     color: ${({ theme }) => theme.colors.secondary};
   }
-  p {
-    color: ${({ theme }) => theme.colors.graycolor};
-    margin-bottom: 3rem;
-    text-align: center;
+  h2 {
+    color: ${({ theme }) => theme.colors.blackcolor};
+    font-size: 2.44rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
   }
   img {
     max-width: 100%;
     height: auto;
     border-radius: 25px;
     margin-top: 4rem;
+  }
+  .login__formEl {
+    margin-bottom: 2rem;
+  }
+  .pass {
+    margin-bottom: 2rem;
+    text-align: right;
+    color: ${({ theme }) => theme.colors.blackcolor};
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  .pass a {
+    text-decoration: underline;
+  }
+  .signup p {
+    margin: 2rem;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.blackcolor};
+    font-size: 1rem;
+  }
+  .signup a {
+    text-decoration: underline;
+    font-weight: bold;
   }
   @media screen and (min-width: 769px) {
   }
@@ -62,5 +86,5 @@ const StyledHero = styled.div`
   }
 `;
 
-export default StyledHero;
+export default StyledLogin;
 export { Container };

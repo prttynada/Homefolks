@@ -5,6 +5,7 @@ const theme = {
     danger: '#EF476F',
     blackcolor: '#073B4C',
     graycolor: '#64748B',
+    softgray: '#e6e6e6',
     white: '#FFFFFF',
   },
 

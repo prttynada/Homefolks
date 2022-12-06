@@ -6,8 +6,9 @@ const Button = styled.button`
   padding: ${({ theme, size }) => theme.paddings[size] || theme.paddings.md};
   font-size: ${({ theme, size }) =>
     theme.fontsizes[size] || theme.fontsizes.md};
+  font-weight: bold;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
   color: ${({ theme, fontColor }) =>
     theme.colors[fontColor] || theme.colors.white};
   background-color: #4361ee;

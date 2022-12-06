@@ -1,9 +1,9 @@
-import Hello from '../components/Hello';
+import Login from '../components/Login';
 
 function LoginPage() {
   return (
     <>
-      <Hello hello="Login Component" />
+      <Login />
     </>
   );
 }

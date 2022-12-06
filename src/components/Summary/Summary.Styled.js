@@ -12,6 +12,7 @@ const StyledSummary = styled.div`
     color: ${({ theme }) => theme.colors.primary};
     margin-bottom: 1rem;
     font-size: 2.44rem;
+    font-weight: bold;
   }
   p {
     color: ${({ theme }) => theme.colors.graycolor};
