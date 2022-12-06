@@ -6,6 +6,7 @@ import AboutPage from './pages/homefolks/AboutPage';
 import ArticlesPage from './pages/homefolks/ArticlesPage';
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
+import HomePage from './pages/homefolks/HomePage';
 import theme from './utils/constants/theme';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/signup" element={<SignupPage />}></Route>
+          <Route path="/homefolks/" element={<HomePage />}></Route>
           <Route path="/homefolks/about" element={<AboutPage />}></Route>
           <Route path="/homefolks/articles" element={<ArticlesPage />}></Route>
         </Routes>
