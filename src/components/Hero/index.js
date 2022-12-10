@@ -16,7 +16,7 @@ function Hero() {
             Konsultasikan Masalah Keluarga Yang Dihadapi Bersama Para Ahli
             HomeFolks
           </p>
-          <Button as="a" href="" variant="primary" size="lg">
+          <Button as="a" href="/login" variant="primary" size="lg">
             Konsultasi Sekarang
           </Button>
         </div>

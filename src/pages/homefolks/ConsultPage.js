@@ -1,20 +1,20 @@
+import Consultation from '../../components/Consultation';
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
-import NotFound from '../../components/NotFound';
 
 function Main() {
   return (
     <main>
-      <NotFound />
+      <Consultation />
     </main>
   );
 }
 
-function ArticlesPage() {
+function ConsultPage() {
   return (
     <>
-      <Navbar />
+      <Navbar name="Logout" />
       <Container>
         <Main />
       </Container>
@@ -23,4 +23,4 @@ function ArticlesPage() {
   );
 }
 
-export default ArticlesPage;
+export default ConsultPage;

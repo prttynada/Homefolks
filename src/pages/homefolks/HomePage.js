@@ -3,28 +3,28 @@ import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import Steps from '../../components/Steps';
 import Summary from '../../components/Summary';
-import Welcome from '../../components/Welcome/Welcome';
+import Welcome from '../../components/Welcome';
 
-function Main() {
+function Main({ user }) {
   return (
     <main>
-      <Welcome />
+      <Welcome user={user} />
       <Steps />
       <Summary />
     </main>
   );
 }
 
-function ArticlesPage() {
+function HomePage({ user }) {
   return (
     <>
-      <Navbar />
+      <Navbar name="Logout" />
       <Container>
-        <Main />
+        <Main user={user} />
       </Container>
       <Footer />
     </>
   );
 }
 
-export default ArticlesPage;
+export default HomePage;
