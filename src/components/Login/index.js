@@ -80,7 +80,11 @@ function Login() {
             <Button type="submit" size="lg" full>
               Login
             </Button>
-            {error && <span className="error">Oops, terjadi kesalahan</span>}
+            {error && (
+              <span className="error" style={{ color: 'red' }}>
+                Oops, terjadi kesalahan
+              </span>
+            )}
             <div className="signup">
               <p>
                 Don&apos;t have account?

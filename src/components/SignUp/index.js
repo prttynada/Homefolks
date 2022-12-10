@@ -53,9 +53,13 @@ function SignUp() {
         password
       );
 
+      const metadata = {
+        contentType: 'image/jpeg',
+      };
+
       const storageRef = ref(storage, displayName);
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
+      const uploadTask = uploadBytesResumable(storageRef, file, metadata);
 
       uploadTask.on(
         (err) => {
@@ -161,7 +165,11 @@ function SignUp() {
             <Button type="submit" size="lg" full>
               Signup
             </Button>
-            {error && <span className="error">Oops, terjadi kesalahan</span>}
+            {error && (
+              <span className="error" style={{ color: 'red' }}>
+                Oops, terjadi kesalahan
+              </span>
+            )}
             <div className="signup">
               <p>
                 Already have account?
