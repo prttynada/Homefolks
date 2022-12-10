@@ -1,23 +1,44 @@
+import { useContext, useRef, useEffect } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { ChatContext } from '../../context/ChatContext';
 import StyledMessage from './Message.Styled';
 
-function Message() {
+function Message({ message }) {
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
+
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [message]);
+
+  console.log(message);
+
   return (
     <>
-      <StyledMessage>
-        <div className="message owner">
+      <StyledMessage ref={ref}>
+        <div
+          className={`message ${
+            message.senderId === currentUser.uid && 'owner'
+          }`}
+        >
           <div className="messageInfo">
             <img
-              src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"
+              src={
+                message.senderId === currentUser.uid
+                  ? currentUser.photoURL
+                  : data.user.photoURL
+              }
               alt=""
             />
             <span>just now</span>
           </div>
           <div className="messageContent">
-            <p>Hellooo</p>
-            <img
-              src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"
-              alt=""
-            />
+            <p>{message.text}</p>
+            {message.img && (
+              <img src={message.img} alt="message in file type" />
+            )}
           </div>
         </div>
       </StyledMessage>

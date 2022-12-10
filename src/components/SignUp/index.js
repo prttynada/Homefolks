@@ -79,7 +79,7 @@ function SignUp() {
               photoURL: downloadURL,
             });
 
-            await setDoc(doc(db, 'userChat', response.user.uid), {});
+            await setDoc(doc(db, 'userChats', response.user.uid), {});
             navigate('/');
           });
         }
