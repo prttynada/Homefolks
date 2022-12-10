@@ -50,6 +50,18 @@ const StyledSignUp = styled.div`
   .pass a {
     text-decoration: underline;
   }
+  label {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    span {
+      color: ${({ theme }) => theme.colors.graycolor};
+      font-size: 1rem;
+    }
+  }
   .signup p {
     margin: 2rem;
     text-align: center;
@@ -59,6 +71,10 @@ const StyledSignUp = styled.div`
   .signup a {
     text-decoration: underline;
     font-weight: bold;
+  }
+  .error {
+    font-size: 1rem;
+    color: ${({ theme }) => theme.colors.danger};
   }
   @media screen and (min-width: 769px) {
   }

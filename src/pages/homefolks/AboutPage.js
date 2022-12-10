@@ -1,12 +1,12 @@
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
-import Hello from '../../components/NotFound';
+import NotFound from '../../components/NotFound';
 
 function Main() {
   return (
     <main>
-      <Hello />
+      <NotFound />
     </main>
   );
 }

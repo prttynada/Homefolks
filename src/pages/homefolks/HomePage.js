@@ -3,7 +3,7 @@ import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import Steps from '../../components/Steps';
 import Summary from '../../components/Summary';
-import Welcome from '../../components/Welcome/Welcome';
+import Welcome from '../../components/Welcome';
 
 function Main() {
   return (
@@ -18,7 +18,7 @@ function Main() {
 function ArticlesPage() {
   return (
     <>
-      <Navbar />
+      <Navbar name="Logout" />
       <Container>
         <Main />
       </Container>

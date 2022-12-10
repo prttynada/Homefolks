@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import {
   Icon,
+  IconButton,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -7,14 +9,70 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiUser, FiKey, FiUserCheck, FiMail } from 'react-icons/fi';
+import {
+  FiUser,
+  FiKey,
+  FiMail,
+  FiImage,
+  FiEyeOff,
+  FiEye,
+} from 'react-icons/fi';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db, storage } from '../../firebase';
 import Button from '../ui/Button';
 import StyledLogin, { Container } from './SignUp.Styled';
 import signup from '../../assets/images/signup.png';
 
 function SignUp() {
   const [show, setShow] = useState(false);
+  const [error, setError] = useState(false);
   const handleClick = () => setShow(!show);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const displayName = e.target[0].value;
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+    const file = e.target[4].files[0];
+
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const storageRef = ref(storage, displayName);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        (err) => {
+          setError(true);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            await updateProfile(response.user, {
+              displayName,
+              photoURL: downloadURL,
+            });
+
+            await setDoc(doc(db, 'users', response.user.uid), {
+              uid: response.user.uid,
+              displayName,
+              email,
+              photoURL: downloadURL,
+            });
+          });
+        }
+      );
+    } catch (err) {
+      setError(true);
+    }
+  };
 
   return (
     <Container>
@@ -26,7 +84,7 @@ function SignUp() {
             <span> Family Issues </span>
             With Our Best Services
           </p>
-          <form action="" onSubmit="">
+          <form onSubmit={handleSubmit}>
             <div className="login__formEl">
               <InputGroup size="lg">
                 <InputLeftAddon children={<Icon as={FiUser} />} />
@@ -47,42 +105,28 @@ function SignUp() {
                   placeholder="Masukkan Password"
                 />
                 <InputRightElement width="4.5rem">
-                  <Button
-                    size="sm"
-                    variant="softgray"
-                    fontColor="blackcolor"
+                  <IconButton
+                    variant="no-outline"
+                    colorScheme="black"
+                    aria-label="Show"
+                    fontSize="20px"
                     onClick={handleClick}
-                  >
-                    {show ? 'Hide' : 'Show'}
-                  </Button>
+                    icon={show ? <FiEyeOff /> : <FiEye />}
+                  />
                 </InputRightElement>
               </InputGroup>
             </div>
             <div className="login__formEl">
-              <InputGroup size="lg">
-                <InputLeftAddon children={<Icon as={FiUserCheck} />} />
-                <Input
-                  type={show ? 'text' : 'password'}
-                  placeholder="Masukkan Ulang Password"
-                />
-                <InputRightElement width="4.5rem">
-                  <Button
-                    size="sm"
-                    variant="softgray"
-                    fontColor="blackcolor"
-                    onClick={handleClick}
-                  >
-                    {show ? 'Hide' : 'Show'}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
+              <input type="file" id="file" style={{ display: 'none' }} />
+              <label htmlFor="file">
+                <FiImage />
+                <span>Tambahkan Foto Profil</span>
+              </label>
             </div>
-            <div className="pass">
-              <Link to="/">Forget Your Password?</Link>
-            </div>
-            <Button size="lg" full>
+            <Button type="submit" size="lg" full>
               Signup
             </Button>
+            {error && <span className="error">Oops, terjadi kesalahan</span>}
             <div className="signup">
               <p>
                 Already have account?

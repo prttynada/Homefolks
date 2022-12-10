@@ -3,6 +3,11 @@ import Button from '../ui/Button';
 import StyledNavbar from './Navbar.Styled';
 
 function Navbar({ name = 'Login' }) {
+  const handleClick = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <StyledNavbar>
       <nav>
@@ -13,8 +18,20 @@ function Navbar({ name = 'Login' }) {
           <div className="nav__list">
             <ul>
               <li className="login">
-                <Button href="" variant="white" size="lg" fontColor="primary">
-                  <Link to={name === 'Login' ? '/login' : '/signup'}>
+                <Button
+                  href=""
+                  variant="white"
+                  size="lg"
+                  fontColor="primary"
+                  onClick={name === 'Logout' ? handleClick : null}
+                >
+                  <Link
+                    to={
+                      name === 'Login' || name === 'Logout'
+                        ? '/login'
+                        : '/signup'
+                    }
+                  >
                     {name}
                   </Link>
                 </Button>

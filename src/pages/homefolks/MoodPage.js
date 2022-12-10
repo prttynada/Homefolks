@@ -11,10 +11,10 @@ function Main() {
   );
 }
 
-function ArticlesPage() {
+function MoodPage() {
   return (
     <>
-      <Navbar />
+      <Navbar name="Logout" />
       <Container>
         <Main />
       </Container>
@@ -23,4 +23,4 @@ function ArticlesPage() {
   );
 }
 
-export default ArticlesPage;
+export default MoodPage;
