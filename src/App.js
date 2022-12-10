@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Home from './pages/Home';
 import AboutPage from './pages/homefolks/AboutPage';
@@ -12,11 +12,12 @@ import theme from './utils/constants/theme';
 import ForgetPassPage from './pages/ForgetPass';
 import ConsultPage from './pages/homefolks/ConsultPage';
 import MoodPage from './pages/homefolks/MoodPage';
+import { AuthContext } from './context/AuthContext';
 
 function App() {
-  const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
 
-  if (!localStorage.getItem('email')) {
+  if (!currentUser) {
     return (
       <ChakraProvider>
         <ThemeProvider theme={theme}>
@@ -39,16 +40,11 @@ function App() {
   return (
     <ChakraProvider>
       <ThemeProvider theme={theme}>
-        {/*
-         * Render Halaman Home
-         * Jika ingin diubah, maka ubah di Halaman Home.
-         */}
         <Routes>
-          <Route path="/" element={<HomePage />}>
-            {useEffect(() => {
-              navigate('/');
-            }, [])}
-          </Route>
+          <Route
+            path="/"
+            element={<HomePage user={currentUser.displayName} />}
+          ></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/homefolks/about" element={<AboutPage />}></Route>
           <Route path="/homefolks/articles" element={<ArticlesPage />}></Route>

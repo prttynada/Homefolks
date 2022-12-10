@@ -8,7 +8,7 @@ import {
   InputRightElement,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   FiUser,
   FiKey,
@@ -29,6 +29,8 @@ import signup from '../../assets/images/signup.png';
 function SignUp() {
   const [show, setShow] = useState(false);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
   const handleClick = () => setShow(!show);
 
   const handleSubmit = async (e) => {
@@ -72,6 +74,9 @@ function SignUp() {
               email,
               photoURL: downloadURL,
             });
+
+            await setDoc(doc(db, 'userChat', response.user.uid), {});
+            navigate('/');
           });
         }
       );

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   Icon,
   IconButton,
@@ -7,63 +8,32 @@ import {
   InputRightElement,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FiUser, FiKey, FiEye, FiEyeOff } from 'react-icons/fi';
 import Button from '../ui/Button';
 import StyledLogin, { Container } from './Login.Styled';
 import login from '../../assets/images/login.png';
+import { auth } from '../../firebase';
 
 function Login() {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
-  const [errorMessages, setErrorMessages] = useState({});
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  // User Login info
-  const database = [
-    {
-      email: 'user1@gmail.com',
-      password: 'pass1',
-    },
-    {
-      email: 'user2@gmail.com',
-      password: 'pass2',
-    },
-  ];
+    const email = e.target[0].value;
+    const password = e.target[1].value;
 
-  const errors = {
-    email: 'invalid email',
-    pass: 'invalid password',
-  };
-
-  const handleSubmit = (event) => {
-    // Prevent page reload
-    event.preventDefault();
-
-    var { email, pass } = document.forms[0];
-
-    // Find user login info
-    const userData = database.find((user) => user.email === email.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: 'pass', message: errors.pass });
-      } else {
-        localStorage.setItem('email', email);
-        localStorage.setItem('password', pass);
-
-        window.location.reload();
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: 'email', message: errors.email });
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/');
+    } catch (err) {
+      setError(true);
     }
   };
 
@@ -82,7 +52,6 @@ function Login() {
               <InputGroup size="lg">
                 <InputLeftAddon children={<Icon as={FiUser} />} />
                 <Input type="email" placeholder="Masukkan Email" name="email" />
-                {renderErrorMessage('email')}
               </InputGroup>
             </div>
             <div className="login__formEl">
@@ -93,7 +62,6 @@ function Login() {
                   placeholder="Masukkan Password"
                   name="pass"
                 />
-                {renderErrorMessage('pass')}
                 <InputRightElement width="4.5rem">
                   <IconButton
                     variant="no-outline"
@@ -112,6 +80,7 @@ function Login() {
             <Button type="submit" size="lg" full>
               Login
             </Button>
+            {error && <span className="error">Oops, terjadi kesalahan</span>}
             <div className="signup">
               <p>
                 Don&apos;t have account?

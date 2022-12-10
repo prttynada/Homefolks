@@ -1,11 +1,12 @@
+import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase';
 import Button from '../ui/Button';
 import StyledNavbar from './Navbar.Styled';
 
 function Navbar({ name = 'Login' }) {
   const handleClick = () => {
-    localStorage.clear();
-    window.location.reload();
+    signOut(auth);
   };
 
   return (

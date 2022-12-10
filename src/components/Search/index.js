@@ -1,10 +1,26 @@
+import { useState } from 'react';
 import StyledSearch from './Search.Styled';
 
 function Search() {
+  const [username, setUsername] = useState('');
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(false);
+
+  const handleSearch = () => {};
+
+  const handleKey = (e) => {
+    e.code === 'Enter' && handleSearch();
+  };
+
   return (
     <StyledSearch>
       <div className="searchForm">
-        <input type="text" placeholder="Search..." />
+        <input
+          type="text"
+          placeholder="Search..."
+          onKeyDown={handleKey}
+          onChange={(e) => setUsername(e.target.value)}
+        />
       </div>
       <div className="userChat">
         <img
