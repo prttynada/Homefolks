@@ -16,6 +16,7 @@ import {
   FiImage,
   FiEyeOff,
   FiEye,
+  FiUserCheck,
 } from 'react-icons/fi';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
@@ -36,7 +37,12 @@ function SignUp() {
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
-    const file = e.target[4].files[0];
+    const confirmPassword = e.target[4].value;
+    const file = e.target[6].files[0];
+
+    if (confirmPassword !== password) {
+      return setError(true);
+    }
 
     try {
       const response = await createUserWithEmailAndPassword(
@@ -102,7 +108,7 @@ function SignUp() {
                 <InputLeftAddon children={<Icon as={FiKey} />} />
                 <Input
                   type={show ? 'text' : 'password'}
-                  placeholder="Masukkan Password"
+                  placeholder="Masukkan password minimal 6 karakter"
                 />
                 <InputRightElement width="4.5rem">
                   <IconButton
@@ -115,6 +121,30 @@ function SignUp() {
                   />
                 </InputRightElement>
               </InputGroup>
+            </div>
+            <div className="login__formEl">
+              <InputGroup size="lg">
+                <InputLeftAddon children={<Icon as={FiUserCheck} />} />
+                <Input
+                  type={show ? 'text' : 'password'}
+                  placeholder="Masukkan kembali password"
+                />
+                <InputRightElement width="4.5rem">
+                  <IconButton
+                    variant="no-outline"
+                    colorScheme="black"
+                    aria-label="Show"
+                    fontSize="20px"
+                    onClick={handleClick}
+                    icon={show ? <FiEyeOff /> : <FiEye />}
+                  />
+                </InputRightElement>
+              </InputGroup>
+              {error && (
+                <span className="error">
+                  Silahkan cek kembali password Anda!
+                </span>
+              )}
             </div>
             <div className="login__formEl">
               <input type="file" id="file" style={{ display: 'none' }} />
