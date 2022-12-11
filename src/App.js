@@ -13,6 +13,7 @@ import ForgetPassPage from './pages/ForgetPass';
 import ConsultPage from './pages/homefolks/ConsultPage';
 import MoodPage from './pages/homefolks/MoodPage';
 import { AuthContext } from './context/AuthContext';
+import ArticleDetail from './pages/homefolks/ArticleDetail';
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -31,6 +32,10 @@ function App() {
               path="/homefolks/articles"
               element={<ArticlesPage />}
             ></Route>
+            <Route
+              path="/homefolks/article"
+              element={<ArticleDetail />}
+            ></Route>
           </Routes>
         </ThemeProvider>
       </ChakraProvider>
@@ -48,6 +53,7 @@ function App() {
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/homefolks/about" element={<AboutPage />}></Route>
           <Route path="/homefolks/articles" element={<ArticlesPage />}></Route>
+          <Route path="/homefolks/article" element={<ArticleDetail />}></Route>
           <Route
             path="/homefolks/consultation"
             element={<ConsultPage />}
