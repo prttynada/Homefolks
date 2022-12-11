@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import family from '../../assets/images/family.png';
 import Button from '../ui/Button';
 import StyledHero, { Container } from './Hero.Styled';
@@ -16,8 +17,8 @@ function Hero() {
             Konsultasikan Masalah Keluarga Yang Dihadapi Bersama Para Ahli
             HomeFolks
           </p>
-          <Button as="a" href="/login" variant="primary" size="lg">
-            Konsultasi Sekarang
+          <Button as="a" variant="primary" size="lg">
+            <Link to="/login">Konsultasi Sekarang</Link>
           </Button>
         </div>
         <div className="hero__right">

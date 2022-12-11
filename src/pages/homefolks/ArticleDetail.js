@@ -1,17 +1,17 @@
-import Articles from '../../components/Articles';
 import Container from '../../components/Container';
+import DetailArticle from '../../components/DetailArticle';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 
 function Main() {
   return (
     <main>
-      <Articles />
+      <DetailArticle />
     </main>
   );
 }
 
-function ArticlesPage() {
+function ArticleDetail() {
   return (
     <>
       <Navbar />
@@ -23,4 +23,4 @@ function ArticlesPage() {
   );
 }
 
-export default ArticlesPage;
+export default ArticleDetail;

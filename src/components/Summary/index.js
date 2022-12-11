@@ -12,13 +12,19 @@ function Summary() {
         <div className="summary__right">
           <h2>Provide The Best Service For You</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales
-            efficitur dui sed commodo. Morbi ut sagittis mi. Nullam nisl nunc,
-            mollis ut arcu in, tristique condimentum quam. Aenean at iaculis
-            nisi. Maecenas interdum, mauris et tristique gravida, turpis sapien
-            egestas dolor, sit amet suscipit libero lacus at tellus. Donec non
-            sapien non lacus dignissim blandit. Suspendisse faucibus a sem in
-            maximus. Nunc porta purus sit amet consectetur condimentum.
+            Dalam rumah tangga penting untuk dapat tumbuh dan berkembang dalam
+            rangka membangun kebutuhan rumah tangga yang baik. Guna mewujudkan
+            hal ini, perlu adanya setiap tindakan dari masing-masing anggota
+            keluarga. Tetapi, di dalam sebuah rumah tangga pasti ada masalah
+            yang sering terjadi dalam keluarga. Masalah yang timbul ini kadang
+            mengakibatkan keutuhan dan kerukunan rumah tangga dapat terganggu.
+            Pada kebanyakan kasus yang terjadi, upaya dalam menyelesaikan
+            masalah keluarga berakhir dengan kebuntuan bahkan sampai saling
+            memusuhi. Jika masalah semakin besar, terkadang perceraian adalah
+            jalan terakhir untuk menyelesaikan masalah. Oleh karena itu,
+            HomeFolks hadir untuk mengatasi masalah yang Anda hadapi. Dengan
+            para ahli yang akan mendampingi Anda selama konsultasi dan
+            memberikan Anda solusi mengenai masalah yang Anda hadapi.
           </p>
         </div>
       </StyledSummary>
