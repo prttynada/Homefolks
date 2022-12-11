@@ -52,7 +52,7 @@ const StyledAbout = styled.div`
     justify-content: space-between;
     text-align: left;
     .hero__right {
-      flex-basis: 50%;
+      flex-basis: 90%;
     }
     .hero__left {
       flex-basis: 50%;
