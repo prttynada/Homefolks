@@ -14,7 +14,6 @@ import {
 import { useState, useContext } from 'react';
 import { db } from '../../firebase';
 import StyledSearch from './Search.Styled';
-import avatar from '../../assets/images/avatar.jpeg';
 import { AuthContext } from '../../context/AuthContext';
 
 function Search() {
@@ -100,7 +99,7 @@ function Search() {
       {error && <span>User not found</span>}
       {user && (
         <div className="userChat" onClick={handleClick}>
-          <img src={user.photoURL || avatar} alt="profil pict" />
+          <img src={user.photoURL} alt="profil pict" />
           <div className="userChatInfo">
             <span>{user.displayName}</span>
           </div>

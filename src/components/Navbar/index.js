@@ -1,12 +1,14 @@
 import { signOut } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
 import Button from '../ui/Button';
 import StyledNavbar from './Navbar.Styled';
 
 function Navbar({ name = 'Login' }) {
+  const navigate = useNavigate();
   const handleClick = () => {
     signOut(auth);
+    navigate('/');
   };
 
   return (

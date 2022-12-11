@@ -23,12 +23,14 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { doc, setDoc } from 'firebase/firestore';
 import { auth, db, storage } from '../../firebase';
 import Button from '../ui/Button';
+import avatar from '../../assets/images/avatar.jpeg';
 import StyledLogin, { Container } from './SignUp.Styled';
 import signup from '../../assets/images/signup.png';
 
 function SignUp() {
   const [show, setShow] = useState(false);
   const [error, setError] = useState(false);
+  const [errorM, setErrorM] = useState('');
   const navigate = useNavigate();
 
   const handleClick = () => setShow(!show);
@@ -40,10 +42,13 @@ function SignUp() {
     const email = e.target[1].value;
     const password = e.target[2].value;
     const confirmPassword = e.target[4].value;
-    const file = e.target[6].files[0];
+    const file = e.target[6].files[0] || avatar;
 
     if (confirmPassword !== password) {
       return setError(true);
+    }
+    if (file.length < 0) {
+      return setErrorM('Mohon tambahkan foto profil!');
     }
 
     try {
@@ -64,6 +69,7 @@ function SignUp() {
       uploadTask.on(
         (err) => {
           setError(true);
+          setErrorM(err);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -86,6 +92,7 @@ function SignUp() {
       );
     } catch (err) {
       setError(true);
+      setErrorM(err);
     }
   };
 
@@ -103,13 +110,13 @@ function SignUp() {
             <div className="login__formEl">
               <InputGroup size="lg">
                 <InputLeftAddon children={<Icon as={FiUser} />} />
-                <Input type="text" placeholder="Masukkan Nama" />
+                <Input type="text" placeholder="Masukkan Nama" isRequired />
               </InputGroup>
             </div>
             <div className="login__formEl">
               <InputGroup size="lg">
                 <InputLeftAddon children={<Icon as={FiMail} />} />
-                <Input type="email" placeholder="Masukkan Email" />
+                <Input type="email" placeholder="Masukkan Email" isRequired />
               </InputGroup>
             </div>
             <div className="login__formEl">
@@ -118,6 +125,7 @@ function SignUp() {
                 <Input
                   type={show ? 'text' : 'password'}
                   placeholder="Masukkan password minimal 6 karakter"
+                  isRequired
                 />
                 <InputRightElement width="4.5rem">
                   <IconButton
@@ -137,6 +145,7 @@ function SignUp() {
                 <Input
                   type={show ? 'text' : 'password'}
                   placeholder="Masukkan kembali password"
+                  isRequired
                 />
                 <InputRightElement width="4.5rem">
                   <IconButton
@@ -156,10 +165,18 @@ function SignUp() {
               )}
             </div>
             <div className="login__formEl">
-              <input type="file" id="file" style={{ display: 'none' }} />
+              <input
+                type="file"
+                id="file"
+                style={{ display: 'none' }}
+                required
+              />
               <label htmlFor="file">
                 <FiImage />
-                <span>Tambahkan Foto Profil</span>
+                <span>
+                  Tambahkan Foto Profil:{' '}
+                  <span style={{ color: 'red' }}>hal ini bersifat wajib!</span>
+                </span>
               </label>
             </div>
             <Button type="submit" size="lg" full>
@@ -167,7 +184,7 @@ function SignUp() {
             </Button>
             {error && (
               <span className="error" style={{ color: 'red' }}>
-                Oops, terjadi kesalahan
+                Oops, terjadi kesalahan: {errorM}
               </span>
             )}
             <div className="signup">
