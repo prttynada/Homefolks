@@ -14,6 +14,7 @@ import ConsultPage from './pages/homefolks/ConsultPage';
 import MoodPage from './pages/homefolks/MoodPage';
 import { AuthContext } from './context/AuthContext';
 import ArticleDetail from './pages/homefolks/ArticleDetail';
+import Layout from './Layout';
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -22,11 +23,38 @@ function App() {
     return (
       <ChakraProvider>
         <ThemeProvider theme={theme}>
+          <Layout name="Login">
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/login" element={<LoginPage />}></Route>
+              <Route path="/signup" element={<SignupPage />}></Route>
+              <Route path="/forget" element={<ForgetPassPage />}></Route>
+              <Route path="/homefolks/about" element={<AboutPage />}></Route>
+              <Route
+                path="/homefolks/articles"
+                element={<ArticlesPage />}
+              ></Route>
+              <Route
+                path="/homefolks/article"
+                element={<ArticleDetail />}
+              ></Route>
+            </Routes>
+          </Layout>
+        </ThemeProvider>
+      </ChakraProvider>
+    );
+  }
+
+  return (
+    <ChakraProvider>
+      <ThemeProvider theme={theme}>
+        <Layout name="Logout">
           <Routes>
-            <Route path="/" element={<Home />}></Route>
+            <Route
+              path="/"
+              element={<HomePage user={currentUser.displayName} />}
+            ></Route>
             <Route path="/login" element={<LoginPage />}></Route>
-            <Route path="/signup" element={<SignupPage />}></Route>
-            <Route path="/forget" element={<ForgetPassPage />}></Route>
             <Route path="/homefolks/about" element={<AboutPage />}></Route>
             <Route
               path="/homefolks/articles"
@@ -36,30 +64,13 @@ function App() {
               path="/homefolks/article"
               element={<ArticleDetail />}
             ></Route>
+            <Route
+              path="/homefolks/consultation"
+              element={<ConsultPage />}
+            ></Route>
+            <Route path="/homefolks/mood" element={<MoodPage />}></Route>
           </Routes>
-        </ThemeProvider>
-      </ChakraProvider>
-    );
-  }
-
-  return (
-    <ChakraProvider>
-      <ThemeProvider theme={theme}>
-        <Routes>
-          <Route
-            path="/"
-            element={<HomePage user={currentUser.displayName} />}
-          ></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/homefolks/about" element={<AboutPage />}></Route>
-          <Route path="/homefolks/articles" element={<ArticlesPage />}></Route>
-          <Route path="/homefolks/article" element={<ArticleDetail />}></Route>
-          <Route
-            path="/homefolks/consultation"
-            element={<ConsultPage />}
-          ></Route>
-          <Route path="/homefolks/mood" element={<MoodPage />}></Route>
-        </Routes>
+        </Layout>
       </ThemeProvider>
     </ChakraProvider>
   );
