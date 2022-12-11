@@ -20,10 +20,10 @@ function Welcome({ user = 'User' }) {
                 </div>
               </GridItem>
             </Link>
-            <Link to="/homefolks/mood">
+            <Link to="/homefolks/add">
               <GridItem pl="2">
                 <div className="card">
-                  <h3 className="step__third">Mood</h3>
+                  <h3 className="step__third">Post Article</h3>
                   <img src={woman} alt="woman illustration" />
                 </div>
               </GridItem>

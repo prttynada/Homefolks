@@ -1,9 +1,9 @@
 import Articles from '../../components/Articles';
 
-function ArticlesPage() {
+function ArticlesPage({ articles }) {
   return (
     <>
-      <Articles />
+      <Articles articles={articles} />
     </>
   );
 }

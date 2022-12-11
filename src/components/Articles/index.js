@@ -1,7 +1,7 @@
 import Article from '../Article';
 import StyledArticles from './Articles.Styled';
 
-function Articles() {
+function Articles({ articles }) {
   return (
     <StyledArticles>
       <section className="articles">
@@ -9,19 +9,9 @@ function Articles() {
           Baca Artikel Menarik Seputar Keluarga
         </h2>
         <div className="article__container">
-          {/* {movies.map(function (movie) {
-            return <Movie key={movie.id} movie={movie} />;
-          })} */}
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
+          {articles.map((article) => (
+            <Article key={article.id} article={article} />
+          ))}
         </div>
       </section>
     </StyledArticles>

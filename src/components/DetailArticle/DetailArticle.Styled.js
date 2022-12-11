@@ -15,6 +15,7 @@ const StyledDetailArticle = styled.div`
   }
   h2 {
     font-size: 2.44rem;
+    font-weight: bold;
     margin-bottom: 0.5rem;
     color: ${({ theme }) => theme.colors.primary};
   }

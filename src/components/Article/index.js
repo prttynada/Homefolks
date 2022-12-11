@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom';
 import StyledArticle from './Article.Styled';
-import woman from '../../assets/images/woman.png';
 
-function Article() {
+function Article({ article }) {
   return (
     <StyledArticle>
-      <img src={woman} alt="article" />
-      <Link to="/homefolks/article">
-        <h3>Sebuah artikel</h3>
+      <img
+        src={
+          article.poster ||
+          'https://images.unsplash.com/photo-1657299170935-31e068229885?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
+        }
+        alt={article.title}
+      />
+      <Link to={`/homefolks/article/${article.id}`}>
+        <h3>{article.title}</h3>
       </Link>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, voluptate
-        omnis fugiat amet officiis facilis dolor incidunt id quod, quisquam
-        aliquid dignissimos atque harum accusantium, consectetur labore
-        corrupti. Labore, quos.
-      </p>
+      <p>{article.body}</p>
     </StyledArticle>
   );
 }

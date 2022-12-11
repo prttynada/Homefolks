@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Home from './pages/Home';
@@ -11,13 +11,15 @@ import HomePage from './pages/homefolks/HomePage';
 import theme from './utils/constants/theme';
 import ForgetPassPage from './pages/ForgetPass';
 import ConsultPage from './pages/homefolks/ConsultPage';
-import MoodPage from './pages/homefolks/MoodPage';
+import AddArticlePage from './pages/homefolks/AddArticlePage';
 import { AuthContext } from './context/AuthContext';
 import ArticleDetail from './pages/homefolks/ArticleDetail';
 import Layout from './Layout';
+import data from './utils/constants/data';
 
 function App() {
   const { currentUser } = useContext(AuthContext);
+  const [articles, setArticles] = useState(data);
 
   if (!currentUser) {
     return (
@@ -32,7 +34,7 @@ function App() {
               <Route path="/homefolks/about" element={<AboutPage />}></Route>
               <Route
                 path="/homefolks/articles"
-                element={<ArticlesPage />}
+                element={<ArticlesPage articles={articles} />}
               ></Route>
               <Route
                 path="/homefolks/article"
@@ -58,7 +60,7 @@ function App() {
             <Route path="/homefolks/about" element={<AboutPage />}></Route>
             <Route
               path="/homefolks/articles"
-              element={<ArticlesPage />}
+              element={<ArticlesPage articles={articles} />}
             ></Route>
             <Route
               path="/homefolks/article"
@@ -68,7 +70,12 @@ function App() {
               path="/homefolks/consultation"
               element={<ConsultPage />}
             ></Route>
-            <Route path="/homefolks/mood" element={<MoodPage />}></Route>
+            <Route
+              path="/homefolks/add"
+              element={
+                <AddArticlePage articles={articles} setArticles={setArticles} />
+              }
+            ></Route>
           </Routes>
         </Layout>
       </ThemeProvider>
